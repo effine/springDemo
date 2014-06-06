@@ -10,9 +10,9 @@
 		<welcome-file>index.jsp</welcome-file>
 	</welcome-file-list>
 
-	<!-- 加载所有配置文件 -->
+	<!-- 加载所有配置文件(应用上下文配置文件) -->
 	<context-param>
-		<param-name>ContentConfig</param-name>
+		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:spring-*.xml</param-value>
 	</context-param>
 
@@ -26,7 +26,7 @@
 		<servlet-name>springMVC</servlet-name>
 		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
 		<init-param>
-			<param-name>ContentConfig</param-name>
+			<param-name>contextConfigLocation</param-name>
 			<param-value>classpath*:spring-mvc.xml</param-value>
 		</init-param>
 		<init-param>
