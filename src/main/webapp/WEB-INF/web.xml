@@ -39,9 +39,17 @@
 		<servlet-name>springMVC</servlet-name>
 		<!-- 拦截所有 -->
 		<url-pattern>/</url-pattern>
-		<url-pattern>*.do</url-pattern>
-		<url-pattern>*.action</url-pattern>
 	</servlet-mapping>
 
+	<!-- 过滤器 Filter -->
+	<filter>
+		<filter-name>LoginFilter</filter-name>
+		<filter-class>com.verphen.filter.LoginFilter</filter-class>
+	</filter>
+	<filter-mapping>
+		<filter-name>LoginFilter</filter-name>
+		<url-pattern>/home/login.action</url-pattern>
+	</filter-mapping>
+	
 </web-app>
 	

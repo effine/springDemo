@@ -14,6 +14,9 @@
 	<!-- 启动注解驱动的Spring MVC功能，注册请求url和注解POJO类方法的映射 -->
 	<mvc:annotation-driven />
 
+	<!-- 访问静态资源 -->
+	<mvc:resources location="/resources/**" mapping="/resources/**" />
+
 	<!-- 启动包扫描功能，以便注册带有@Controller、@Service、@repository、@Component等注解的类成为spring的bean -->
 	<context:component-scan base-package="com.verphen" />
 
@@ -23,5 +26,16 @@
 		<property name="prefix" value="/"></property><!-- 前 缀 -->
 		<property name="suffix" value=".jsp"></property><!-- 后 缀 -->
 	</bean>
+
+
+	<!-- 拦截器(基于注解的配置) -->
+	<mvc:interceptors>
+		<!-- 多个拦截器，顺序执行 -->
+		<mvc:interceptor>
+			<mvc:mapping path="/springDemo/home/login" />
+			<bean class="com.verphen.interceptor.AutoLoginInterceptor"></bean>
+		</mvc:interceptor>
+	</mvc:interceptors>
+
 
 </beans>
