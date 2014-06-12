@@ -27,6 +27,9 @@ function login() {
 			username : $(".username").val(),
 			password : $(".password").val(),
 			isAutologin : $(".isAutologin").is(":checked")
+		},
+		success : function(data) {
+			location.href = "/springDemo/" + data + ".jsp";
 		}
 	});
 }
