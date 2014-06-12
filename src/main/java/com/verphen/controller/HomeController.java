@@ -45,8 +45,11 @@ public class HomeController {
 
 	@RequestMapping("/login")
 	@ResponseBody
-	public String login(String username, String password, String isAutologin,HttpServletRequest request,
-			HttpServletResponse response) {
+	public String login(String username, String password, String isAutologin,
+			HttpServletRequest request, HttpServletResponse response) {
+
+		// Cookie[] cookie = request.getCookies();
+
 		if ("test".equalsIgnoreCase(username)
 				&& "test".equalsIgnoreCase(password)) {
 
@@ -62,11 +65,13 @@ public class HomeController {
 			cookieUsername.setMaxAge(60 * 60 * 24 * 5); /* 设置cookie的有效期为 5 天 */
 			response.addCookie(cookiePassword);
 
-	/*		String sessionId = session.getId();
-			System.out.println("SessionID：" + sessionId);
-			Cookie cookieSessionID = new Cookie("sessionID", sessionId);
-			cookieSessionID.setMaxAge(60 * 60 * 24 * 5);  设置cookie的有效期为 5 天 
-			response.addCookie(cookieSessionID);*/
+			/*
+			 * String sessionId = session.getId();
+			 * System.out.println("SessionID：" + sessionId); Cookie
+			 * cookieSessionID = new Cookie("sessionID", sessionId);
+			 * cookieSessionID.setMaxAge(60 * 60 * 24 * 5); 设置cookie的有效期为 5 天
+			 * response.addCookie(cookieSessionID);
+			 */
 
 			return "success";
 		}
