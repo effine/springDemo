@@ -27,12 +27,15 @@
 
 				<br />
 				<form>
-					<b>x1</b><input type="text" size="4" id="x1" /> <b class="ml5">y1</b><input
-						type="text" size="4" id="y1" /> <b class="ml5">x2</b><input
-						type="text" size="4" id="x2" /> <b class="ml5">y2</b><input
-						type="text" size="4" id="y2" /> <b class="ml5">w</b><input
-						type="text" size="4" id="w" /> <b class="ml5">h</b><input
-						type="text" size="4" id="h" />
+					<b>x1</b>
+						<input type="text" size="4" id="x1" /> <b class="ml5">y1</b>
+						<input type="text" size="4" id="y1" /> <b class="ml5">x2</b>
+						<input type="text" size="4" id="x2" /> <b class="ml5">y2</b>
+						<input type="text" size="4" id="y2" /> <b class="ml5">w</b>
+						<input type="text" size="4" id="w" /> <b class="ml5">h</b>
+						<input type="text" size="4" id="h" />
+						
+						<input type="button" onclick="saveImg();">
 				</form>
 			</div>
 		</div>

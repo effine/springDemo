@@ -32,6 +32,13 @@ function login() {
 	});
 }
 
+function savaImg() {
+	$.ajax({
+
+	});
+
+}
+
 jQuery(function($) {
 
 	// Create variables (in this scope) to hold the API and image size
@@ -44,7 +51,6 @@ jQuery(function($) {
 
 	console.log('init', [ xsize, ysize ]);
 	$('#target').Jcrop({
-		allowSelect: false,
 		onChange : updatePreview,
 		onSelect : updatePreview,
 		aspectRatio : xsize / ysize
@@ -61,14 +67,14 @@ jQuery(function($) {
 	});
 
 	function updatePreview(c) {
-		
+
 		$("#x1").val(c.x);
 		$("#y1").val(c.y);
 		$("#x2").val(c.x2);
 		$("#y2").val(c.y2);
 		$("#w").val(c.w);
 		$("#h").val(c.h);
-		
+
 		if (parseInt(c.w) > 0) {
 			var rx = xsize / c.w;
 			var ry = ysize / c.h;

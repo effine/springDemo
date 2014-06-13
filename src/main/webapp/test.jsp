@@ -41,10 +41,19 @@
 
 <script>
 	$(function() {
-		$(".imgT").Jcrop({
-			onChange : showCoords,
-			onSelect : showCoords
-		});
+		var img = new Image();
+		img.src = $(".imgT").src;
+		$(".imgT").Jcrop(
+				{
+					onChange : showCoords,
+					onSelect : showCoords,
+					allowSelect : false,
+					bgOpacity : 0.5,
+					aspectRatio : 0.9,
+					setSelect : [ (img.width / 4), (img.height / 4),
+							(img.width / 2), (img.height / 2) ],
+				});
+
 	});
 
 	function showCoords(c) {
