@@ -42,7 +42,7 @@
 <script>
 	$(function() {
 		var img = new Image();
-		img.src = $(".imgT").src;
+		img.src = $(".imgT").attr("src");
 		$(".imgT").Jcrop(
 				{
 					onChange : showCoords,
@@ -50,8 +50,8 @@
 					allowSelect : false,
 					bgOpacity : 0.5,
 					aspectRatio : 0.9,
-					setSelect : [ (img.width / 4), (img.height / 4),
-							(img.width / 2), (img.height / 2) ],
+					setSelect : [ img.width / 4, img.height / 4,
+							(img.width / 4) * 3, (img.height / 4) * 3 ],
 				});
 
 	});
