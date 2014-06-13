@@ -29,13 +29,13 @@
 
 
 	<!-- 拦截器(基于注解的配置) -->
-	<mvc:interceptors>
-		<!-- 多个拦截器，顺序执行 -->
+	<!-- <mvc:interceptors>
+		多个拦截器，顺序执行
 		<mvc:interceptor>
 			<mvc:mapping path="/springDemo/home/login" />
 			<bean class="com.verphen.interceptor.AutoLoginInterceptor"></bean>
 		</mvc:interceptor>
-	</mvc:interceptors>
+	</mvc:interceptors> -->
 
 
 </beans>

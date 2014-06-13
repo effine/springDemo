@@ -9,7 +9,6 @@ import java.io.IOException;
 
 import javax.servlet.FilterChain;
 import javax.servlet.ServletException;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -21,23 +20,6 @@ public class LoginFilter extends OncePerRequestFilter {
 	protected void doFilterInternal(HttpServletRequest request,
 			HttpServletResponse response, FilterChain filterChain)
 			throws ServletException, IOException {
-
-		boolean flag = false;
-
-		Cookie[] cookie = request.getCookies();
-		for (Cookie c : cookie) {
-			if ("username".equalsIgnoreCase(c.getName())
-					&& "test".equalsIgnoreCase(c.getValue())) {
-				flag = true;
-				break;
-			}
-		}
-
-		if (flag) {
-			response.sendRedirect("/springDemo/success.jsp");
-		} else {
-			// response.sendRedirect("/springDemo/login.jsp");
-			filterChain.doFilter(request, response);
-		}
+		filterChain.doFilter(request, response);
 	}
 }
