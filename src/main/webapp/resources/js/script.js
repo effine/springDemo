@@ -17,6 +17,54 @@ function autoLogin() {
 	});
 }
 
+
+function upload(){
+	$(".imgUpload").submit();
+}
+
+function showImg(obj){
+	alert(obj.value);
+//	$(".mainImg").attr("src",obj.value);
+}
+
+// 图片上传预览 IE是用了滤镜。
+function previewImage(file) {
+	var MAXWIDTH = 260;
+	var MAXHEIGHT = 180;
+	var div = document.getElementById('preview');
+	if (file.files && file.files[0]) {
+		div.innerHTML = '<img id=target>';
+		var img = document.getElementById('target');
+		img.onload = function() {
+			var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth,
+					img.offsetHeight);
+			img.width = rect.width;
+			img.height = rect.height;
+			// img.style.marginLeft = rect.left+'px';
+			img.style.marginTop = rect.top + 'px';
+		}
+		var reader = new FileReader();
+		reader.onload = function(evt) {
+			img.src = evt.target.result;
+		}
+		reader.readAsDataURL(file.files[0]);
+	} else // 兼容IE
+	{
+		var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
+		file.select();
+		var src = document.selection.createRange().text;
+		div.innerHTML = '<img id=target>';
+		var img = document.getElementById('target');
+		img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
+		var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth,
+				img.offsetHeight);
+		status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
+		div.innerHTML = "<div id=divhead style='width:" + rect.width
+				+ "px;height:" + rect.height + "px;margin-top:" + rect.top
+				+ "px;" + sFilter + src + "\"'></div>";
+	}
+}
+
 function login() {
 	$.ajax({
 		type : "POST",
@@ -40,7 +88,6 @@ function savaImg() {
 }
 
 jQuery(function($) {
-
 	// Create variables (in this scope) to hold the API and image size
 	var jcrop_api, boundx, boundy,
 
@@ -53,6 +100,8 @@ jQuery(function($) {
 	$('#target').Jcrop({
 		onChange : updatePreview,
 		onSelect : updatePreview,
+//		allowSelect : false,
+		bgOpacity : 0.5,
 		aspectRatio : xsize / ysize
 	}, function() {
 		// Use the API to get the real image size

@@ -2,9 +2,10 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
 <body>
-	<form enctype="multipart/form-data" method="post">
-		<input type="file">
+	<form class="imgUpload" action="/springDemo/home/upload.action" enctype="multipart/form-data" method="post"  >
+		<input class="selfile" type="file" name="selfile" onchange="upload()" >
 	</form>
+
 	<br>
 	<br>
 	<br>
@@ -14,12 +15,14 @@
 		<div class="row">
 			<div class="span12">
 				<div class="jc-demo-box">
-
-					<img src="resources/imgs/pic.jpg" id="target" />
-
+				
+					<div id="preview">
+						<img src="D:\\upload\\1402900092732.jpg" id="target" class="mainImg" />
+					</div>
+					
 					<div id="preview-pane">
 						<div class="preview-container">
-							<img src="resources/imgs/pic.jpg" class="jcrop-preview" />
+							<img src="D:\\upload\\1402900092732.jpg" class="jcrop-preview" />
 						</div>
 					</div>
 
@@ -34,9 +37,11 @@
 						<input type="text" size="4" id="y2" /> <b class="ml5">w</b>
 						<input type="text" size="4" id="w" /> <b class="ml5">h</b>
 						<input type="text" size="4" id="h" />
-						
-						<input type="button" onclick="saveImg();">
 				</form>
+				
+				<br>
+				<input type="button" value="上传" onclick="saveImg()">
+				
 			</div>
 		</div>
 	</div>

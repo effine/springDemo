@@ -49,7 +49,7 @@ public class ImgUtils {
 
 	public static void main(String[] args) {
 		try {
-			cut("d:\\1.jpg", "d:\\2.jpg", 0, 0, 100, 100);
+			cut("d:\\1.jpg", "d:\\2.jpg", 0, 0, 200, 200);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

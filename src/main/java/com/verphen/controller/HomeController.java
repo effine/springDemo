@@ -1,12 +1,17 @@
 package com.verphen.controller;
 
+import java.io.File;
+import java.io.IOException;
+
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller
 @RequestMapping("/home")
@@ -89,5 +94,32 @@ public class HomeController {
 			}
 		}
 		return "login";
+	}
+
+	@RequestMapping("/upload")
+	public @ResponseBody
+	String upload(
+			HttpServletRequest request,
+			HttpServletResponse response,
+			@RequestParam(value = "selfile", required = true) MultipartFile selfile) {
+
+		String uploadPath = "D:\\upload\\";
+
+		String filename = selfile.getOriginalFilename();
+		filename = Long.toString(System.currentTimeMillis())+filename.substring(filename.lastIndexOf("."));
+		File targetFile = new File(uploadPath, filename);
+
+		if (!targetFile.exists()) {
+			targetFile.mkdirs();
+		}
+
+		try {
+			selfile.transferTo(targetFile);
+		} catch (IllegalStateException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return uploadPath + filename;
 	}
 }
