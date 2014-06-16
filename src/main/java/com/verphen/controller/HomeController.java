@@ -6,6 +6,7 @@ import java.io.IOException;
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -97,16 +98,18 @@ public class HomeController {
 	}
 
 	@RequestMapping("/upload")
-	public @ResponseBody
-	String upload(
+	public String upload(
 			HttpServletRequest request,
 			HttpServletResponse response,
+			HttpSession session,
 			@RequestParam(value = "selfile", required = true) MultipartFile selfile) {
 
-		String uploadPath = "D:\\upload\\";
+		String uploadPath = request.getServletContext().getRealPath("/")
+				+ "resources\\upload\\";
 
 		String filename = selfile.getOriginalFilename();
-		filename = Long.toString(System.currentTimeMillis())+filename.substring(filename.lastIndexOf("."));
+		filename = Long.toString(System.currentTimeMillis())
+				+ filename.substring(filename.lastIndexOf("."));
 		File targetFile = new File(uploadPath, filename);
 
 		if (!targetFile.exists()) {
@@ -120,6 +123,7 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return uploadPath + filename;
+		session.setAttribute("filename", "resources/upload/"+filename);
+		return "index";
 	}
 }

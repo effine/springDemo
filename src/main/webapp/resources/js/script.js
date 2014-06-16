@@ -17,14 +17,22 @@ function autoLogin() {
 	});
 }
 
-
-function upload(){
-	$(".imgUpload").submit();
+function upload(obj) {
+	$.ajax({
+		url : '/springDemo/home/upload.action',
+		type : 'POST',
+		enctype : 'multipart/form-data',
+		data : obj,
+		success : function(data) {
+			$(".jcrop-preview").attr("src", "resources/upload/" + data);
+			$(".mainImg").attr("src", "resources/upload/" + data);
+		}
+	});
 }
 
-function showImg(obj){
+function showImg(obj) {
 	alert(obj.value);
-//	$(".mainImg").attr("src",obj.value);
+	// $(".mainImg").attr("src",obj.value);
 }
 
 // 图片上传预览 IE是用了滤镜。
@@ -100,7 +108,7 @@ jQuery(function($) {
 	$('#target').Jcrop({
 		onChange : updatePreview,
 		onSelect : updatePreview,
-//		allowSelect : false,
+		// allowSelect : false,
 		bgOpacity : 0.5,
 		aspectRatio : xsize / ysize
 	}, function() {

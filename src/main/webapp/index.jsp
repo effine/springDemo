@@ -3,7 +3,7 @@
 <html>
 <body>
 	<form class="imgUpload" action="/springDemo/home/upload.action" enctype="multipart/form-data" method="post"  >
-		<input class="selfile" type="file" name="selfile" onchange="upload()" >
+		<input class="selfile" type="file" name="selfile" onchange="upload(this)" >
 	</form>
 
 	<br>
@@ -17,12 +17,12 @@
 				<div class="jc-demo-box">
 				
 					<div id="preview">
-						<img src="D:\\upload\\1402900092732.jpg" id="target" class="mainImg" />
+						<img src="" id="target" class="mainImg" />
 					</div>
 					
 					<div id="preview-pane">
 						<div class="preview-container">
-							<img src="D:\\upload\\1402900092732.jpg" class="jcrop-preview" />
+							<img src="D:\\1.jpg" class="jcrop-preview" />
 						</div>
 					</div>
 
