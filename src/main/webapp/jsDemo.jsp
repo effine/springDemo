@@ -3,7 +3,7 @@
 <html>
 <body>
 
-	<h3>js验证</h3>
+	<h3>js验证案列</h3>
 
 	<div>
 		文本框是否为空：<input type="text" class="t1"> 
@@ -20,12 +20,14 @@
 		<input type="button" value="验证" onclick="ck3()">
 	</div>
 
-	<br><br>
-	正则表达式汇总：
-	<div style="font-size: 13;padding: 20;">
-		邮箱：	/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/
-		<br>
-		手机号：
+	<br><br><br><br>
+	常用正则表达式汇总：
+	<div style="font-size: 14;">
+		<ul>
+			<li>邮箱：	/^([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+@([a-zA-Z0-9]+[_|\_|\.]?)*[a-zA-Z0-9]+\.[a-zA-Z]{2,3}$/</li>
+			<li>手机号(11位)：	/^[1][3-8]+\d{9}$/</li>
+			<li>固话号(区号+座机号码+分机号码)： /^(0[0-9]{2,3}\-)?([2-9][0-9]{6,7})+(\-[0-9]{1,4})?$/</li>
+		</ul>
 	</div>
 </body>
 </html>
@@ -44,11 +46,13 @@
 	
 	function ck2(){
 		var value = $(".t2").val().trim();
-		var reg = /^(((13[0-9]{1})|159|153)+\d{8})$/;
+		
+		//js中正则表达式的使用
+		var reg = /^[1][3-8]+\d{9}$/;	
 		if(reg.test(value)){
-			alert("手机号格式不对");
-		}else{
 			alert("通过验证");
+		}else{
+			alert("手机号格式不对");
 		}
 	}
 	
