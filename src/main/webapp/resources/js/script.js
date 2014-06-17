@@ -18,59 +18,23 @@ function autoLogin() {
 }
 
 function upload(obj) {
+	$(".imgUpload").submit();
+}
+
+function cutImg() {
 	$.ajax({
-		url : '/springDemo/home/upload.action',
+		url : '/springDemo/home/cutImg',
 		type : 'POST',
-		enctype : 'multipart/form-data',
-		data : obj,
-		success : function(data) {
-			$(".jcrop-preview").attr("src", "resources/upload/" + data);
-			$(".mainImg").attr("src", "resources/upload/" + data);
+		data : {
+			px : $("#x1").val(),
+			py : $("#y1").val(),
+			pwidth : $("#w").val(),
+			pheight : $("#h").val()
+		},
+		success : function() {
+			location.href = "/springDemo/success.jsp";
 		}
 	});
-}
-
-function showImg(obj) {
-	alert(obj.value);
-	// $(".mainImg").attr("src",obj.value);
-}
-
-// 图片上传预览 IE是用了滤镜。
-function previewImage(file) {
-	var MAXWIDTH = 260;
-	var MAXHEIGHT = 180;
-	var div = document.getElementById('preview');
-	if (file.files && file.files[0]) {
-		div.innerHTML = '<img id=target>';
-		var img = document.getElementById('target');
-		img.onload = function() {
-			var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth,
-					img.offsetHeight);
-			img.width = rect.width;
-			img.height = rect.height;
-			// img.style.marginLeft = rect.left+'px';
-			img.style.marginTop = rect.top + 'px';
-		}
-		var reader = new FileReader();
-		reader.onload = function(evt) {
-			img.src = evt.target.result;
-		}
-		reader.readAsDataURL(file.files[0]);
-	} else // 兼容IE
-	{
-		var sFilter = 'filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(sizingMethod=scale,src="';
-		file.select();
-		var src = document.selection.createRange().text;
-		div.innerHTML = '<img id=target>';
-		var img = document.getElementById('target');
-		img.filters.item('DXImageTransform.Microsoft.AlphaImageLoader').src = src;
-		var rect = clacImgZoomParam(MAXWIDTH, MAXHEIGHT, img.offsetWidth,
-				img.offsetHeight);
-		status = ('rect:' + rect.top + ',' + rect.left + ',' + rect.width + ',' + rect.height);
-		div.innerHTML = "<div id=divhead style='width:" + rect.width
-				+ "px;height:" + rect.height + "px;margin-top:" + rect.top
-				+ "px;" + sFilter + src + "\"'></div>";
-	}
 }
 
 function login() {
@@ -88,13 +52,6 @@ function login() {
 	});
 }
 
-function savaImg() {
-	$.ajax({
-
-	});
-
-}
-
 jQuery(function($) {
 	// Create variables (in this scope) to hold the API and image size
 	var jcrop_api, boundx, boundy,
@@ -108,9 +65,10 @@ jQuery(function($) {
 	$('#target').Jcrop({
 		onChange : updatePreview,
 		onSelect : updatePreview,
-		// allowSelect : false,
+		 allowSelect : false,
 		bgOpacity : 0.5,
-		aspectRatio : xsize / ysize
+		aspectRatio : xsize / ysize,
+		setSelect: [0,0,200,200]
 	}, function() {
 		// Use the API to get the real image size
 		var bounds = this.getBounds();

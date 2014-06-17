@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.verphen.utils.ImgUtils;
+
 @Controller
 @RequestMapping("/home")
 public class HomeController {
@@ -94,7 +96,7 @@ public class HomeController {
 				response.addCookie(c);
 			}
 		}
-		return "login";
+		return "autoLogin";
 	}
 
 	@RequestMapping("/upload")
@@ -123,7 +125,38 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		session.setAttribute("filename", "resources/upload/"+filename);
+		session.setAttribute("filename", filename);
 		return "index";
+	}
+
+	@RequestMapping("/cutImg")
+	public String cutImg(HttpServletRequest request,
+			HttpServletResponse response, HttpSession session, String px,
+			String py, String pwidth, String pheight) {
+
+		int x = sub(px);
+		int y = sub(py);
+		int width = sub(pwidth);
+		int height = sub(pheight);
+
+		String path = request.getServletContext().getRealPath("/")
+				+ "resources/upload/";
+		String filename = session.getAttribute("filename").toString();
+
+		String srcpath = path + filename;
+		String subpath = path + "Cut" + filename;
+		try {
+			ImgUtils.cut(srcpath, subpath, x, y, width, height);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		return "index";
+	}
+
+	public int sub(String s) {
+		if (s.contains(".")) {
+			s = s.substring(0, s.lastIndexOf("."));
+		}
+		return Integer.parseInt(s);
 	}
 }

@@ -42,6 +42,7 @@
 	</servlet-mapping>
 
 	<!-- 过滤器 Filter -->
+	<!-- 
 	<filter>
 		<filter-name>LoginFilter</filter-name>
 		<filter-class>com.verphen.filter.LoginFilter</filter-class>
@@ -50,6 +51,7 @@
 		<filter-name>LoginFilter</filter-name>
 		<url-pattern>/home/login.action</url-pattern>
 	</filter-mapping>
+	 -->
 	<!-- 过滤字符编码 -->
 	<filter>
 		<filter-name>encodingFilter</filter-name>
