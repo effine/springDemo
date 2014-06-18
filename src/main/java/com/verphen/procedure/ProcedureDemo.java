@@ -9,7 +9,6 @@ import java.sql.CallableStatement;
 import java.sql.Connection;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Types;
 
 public class ProcedureDemo {
 	Connector c = new Connector();
@@ -61,7 +60,5 @@ public class ProcedureDemo {
 		ProcedureDemo t = new ProcedureDemo();
 		t.handleSoleData();
 		// t.handleBothData();
-
 	}
-
 }
