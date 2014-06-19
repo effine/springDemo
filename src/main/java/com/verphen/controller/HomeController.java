@@ -8,6 +8,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -19,6 +21,10 @@ import com.verphen.utils.ImgUtils;
 @Controller
 @RequestMapping("/home")
 public class HomeController {
+
+	/** 组件日志 */
+	private static final Logger logger = LoggerFactory
+			.getLogger(HomeController.class.getName());
 
 	@RequestMapping("/isAutologin")
 	public @ResponseBody
@@ -76,6 +82,9 @@ public class HomeController {
 				Cookie cookiePassword = new Cookie("password", password);
 				cookieUsername.setMaxAge(60 * 60 * 24 * 5); /* 设置cookie的有效期为 5 天 */
 				response.addCookie(cookiePassword);
+
+				logger.info("测试日志-----------------");
+
 			}
 			return "pageSuccess";
 		}

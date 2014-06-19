@@ -15,10 +15,9 @@
             The rule means that requests to /test/status/ will be redirected to /rewrite-status
             the url will be rewritten.
         </note>
-        <from>/test.jsp</from>
-        <to>test.html</to>
+        <from>^/springDemo/home/test.html$</from><!-- 正则以^开头，以$结尾 -->
+        <to>/springDemo/home/test</to>
     </rule>
-
 
     <outbound-rule>
         <note>

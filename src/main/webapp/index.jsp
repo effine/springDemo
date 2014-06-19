@@ -6,7 +6,7 @@
 		<input class="selfile" type="file" name="selfile" onchange="upload(this)" >
 	</form>
 
-	<a href="/springDemo/home/test">跳转到WEB-INF</a>
+	<a href="/springDemo/home/test.html">跳转到WEB-INF</a>
 	<br>
 	<br>
 	<br>
