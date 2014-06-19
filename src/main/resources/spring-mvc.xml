@@ -27,24 +27,24 @@
 		<property name="suffix" value=".jsp"></property><!-- 后 缀 -->
 	</bean>
 
-
 	<!-- 拦截器(基于注解的配置) -->
-	<!-- <mvc:interceptors>
-		多个拦截器，顺序执行
+	<mvc:interceptors>
+		<!-- 多个拦截器，顺序执行 -->
 		<mvc:interceptor>
-			<mvc:mapping path="/springDemo/home/login" />
-			<bean class="com.verphen.interceptor.AutoLoginInterceptor"></bean>
+			<mvc:mapping path="/home/*" /><!-- 如果不配置或/*,将拦截所有的Controller -->
+			<bean class="com.verphen.interceptor.LoginInterceptor" />
 		</mvc:interceptor>
-	</mvc:interceptors> -->
-	
+	</mvc:interceptors>
+
+
 	<!-- 上传文件配置 -->
-	<bean id="multipartResolver"  
-        class="org.springframework.web.multipart.commons.CommonsMultipartResolver">  
-        <property name="maxUploadSize">   <!-- set the max upload size100MB -->  
-            <value>104857600</value>  
-        </property>  
-        <property name="maxInMemorySize">  
-            <value>4096</value>  
-        </property>  
-    </bean>  
+	<bean id="multipartResolver"
+		class="org.springframework.web.multipart.commons.CommonsMultipartResolver">
+		<property name="maxUploadSize">   <!-- set the max upload size100MB -->
+			<value>104857600</value>
+		</property>
+		<property name="maxInMemorySize">
+			<value>4096</value>
+		</property>
+	</bean>
 </beans>

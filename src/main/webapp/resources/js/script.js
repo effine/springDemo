@@ -9,7 +9,7 @@ function autoLogin() {
 		success : function(data) {
 			if ("true" == data) {
 				$(".isAutologin").attr("checked", true);
-				location.href = "/springDemo/WEB-INF/views/pageSuccess.jsp";
+				location.href = "/springDemo/pageSuccess.jsp";
 			} else if ("false" == data) {
 				$(".isAutologin").attr("checked", false);
 			}
@@ -32,7 +32,7 @@ function cutImg() {
 			pheight : $("#h").val()
 		},
 		success : function() {
-			location.href = "/springDemo/WEB-INF/views/success.jsp";
+			location.href = "/springDemo/success.jsp";
 		}
 	});
 }
@@ -47,7 +47,7 @@ function login() {
 			isAutologin : $(".isAutologin").is(":checked")
 		},
 		success : function(data) {
-			location.href = "/springDemo/WEB-INF/views/" + data + ".jsp";
+			location.href = "/springDemo/" + data + ".jsp";
 		}
 	});
 }

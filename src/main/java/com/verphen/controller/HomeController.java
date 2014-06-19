@@ -96,7 +96,7 @@ public class HomeController {
 				response.addCookie(c);
 			}
 		}
-		return "autoLogin";
+		return "login";
 	}
 
 	@RequestMapping("/upload")
@@ -159,4 +159,11 @@ public class HomeController {
 		}
 		return Integer.parseInt(s);
 	}
+
+	@RequestMapping("test")
+	public String test() {
+		System.out.println("-------跳转至WEB-INF目录下页面------");
+		return "test";
+	}
+
 }

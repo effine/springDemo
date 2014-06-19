@@ -6,7 +6,7 @@
 		<input class="selfile" type="file" name="selfile" onchange="upload(this)" >
 	</form>
 
-	<a href="/springDemo/WEB-INF/views/autoLogin.jsp">登录</a>
+	<a href="/springDemo/home/test">跳转到WEB-INF</a>
 	<br>
 	<br>
 	<br>
