@@ -16,7 +16,6 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-import com.sun.jimi.core.*;
 
 public class ImgUtils {
 
