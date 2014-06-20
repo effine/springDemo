@@ -84,7 +84,15 @@ public class HomeController {
 				response.addCookie(cookiePassword);
 
 				logger.info("测试日志-----------------");
+				logger.debug("--------测试日志----------------");
 
+				logger.debug("Here is some DEBUG"); 
+
+				logger.info("Here is some INFO"); 
+
+				logger.warn("Here is some WARN"); 
+
+				logger.error("Here is some ERROR"); 
 			}
 			return "pageSuccess";
 		}
