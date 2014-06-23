@@ -62,6 +62,9 @@ jQuery(function($) {
 	xsize = $pcnt.width(), ysize = $pcnt.height();
 
 	console.log('init', [ xsize, ysize ]);
+	
+	alert("size: " +xsize +"  "+ysize);
+	
 	$('#target').Jcrop({
 		onChange : updatePreview,
 		onSelect : updatePreview,

@@ -61,14 +61,10 @@
 </html>
 
 <!-- Css file -->
-<link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>"
-	type="text/css" />
-<link rel="stylesheet"
-	href="<c:url value='/resources/css/jquery.Jcrop.css'/>" type="text/css" />
-<link rel="stylesheet" href="<c:url value='/resources/css/demos.css'/>"
-	type="text/css" />
-<link rel="stylesheet" href="<c:url value='/resources/css/mymain.css'/>"
-	type="text/css" />
+<link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>" type="text/css" />
+<link rel="stylesheet" 	href="<c:url value='/resources/css/jquery.Jcrop.css'/>" type="text/css" />
+<link rel="stylesheet" href="<c:url value='/resources/css/demos.css'/>"  type="text/css" />
+<link rel="stylesheet" href="<c:url value='/resources/css/mymain.css'/>" type="text/css" />
 
 <!-- Js file -->
 <script src="<c:url value='/resources/js/jquery.min.js'/>"></script>
