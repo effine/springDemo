@@ -161,7 +161,7 @@ public class HomeController {
 		String srcpath = path + filename;
 		String subpath = path + "Cut" + filename;
 		try {
-			ImgUtils.cut(srcpath, subpath, x, y, width, height);
+			ImgUtils.mycut(srcpath, subpath, x, y, width, height);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
