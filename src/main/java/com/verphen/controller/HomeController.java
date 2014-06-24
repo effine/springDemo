@@ -2,6 +2,7 @@ package com.verphen.controller;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +16,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.verphen.dao.impl.TestJDBC;
+import com.verphen.model.Student;
+import com.verphen.model.User;
 import com.verphen.utils.ImgUtils;
 
 @Controller
@@ -81,17 +85,18 @@ public class HomeController {
 				cookieUsername.setMaxAge(60 * 60 * 24 * 5); /* 设置cookie的有效期为 5 天 */
 				response.addCookie(cookiePassword);
 			}
-			
-			System.out.println("-------------------1111111111111111111111----------------------");
+
+			System.out
+					.println("-------------------1111111111111111111111----------------------");
 			logger.info("测试日志-----------------");
 			logger.debug("--------测试日志----------------");
 
-			logger.info("Here is some INFO"); 
+			logger.info("Here is some INFO");
 
-			logger.warn("Here is some WARN"); 
+			logger.warn("Here is some WARN");
 
-			logger.error("Here is some ERROR"); 
-			
+			logger.error("Here is some ERROR");
+
 			return "pageSuccess";
 		}
 		return "pageFalse";
@@ -146,13 +151,13 @@ public class HomeController {
 
 	@RequestMapping("/cutImg")
 	public String cutImg(HttpServletRequest request,
-			HttpServletResponse response, HttpSession session, String px,
-			String py, String pwidth, String pheight) {
+			HttpServletResponse response, HttpSession session, int x, int y,
+			int width, int height) {
 
-		int x = sub(px);
-		int y = sub(py);
-		int width = sub(pwidth);
-		int height = sub(pheight);
+		/*
+		 * int x = sub(px); int y = sub(py); int width = sub(pwidth); int height
+		 * = sub(pheight);
+		 */
 
 		String path = request.getServletContext().getRealPath("/")
 				+ "resources/upload/";
@@ -179,6 +184,21 @@ public class HomeController {
 	public String test() {
 		System.out.println("-------跳转至WEB-INF目录下页面------");
 		return "test";
+	}
+
+	/********************** 测试controller *****************************/
+	@RequestMapping("t1")
+	@ResponseBody
+	public String t1(HttpServletRequest request, HttpServletResponse response,
+			User user) {
+		System.out.println("----------------------" + user.getName() + ": "
+				+ user.getPasswd());
+		return user.getName() + ": " + user.getPasswd();
+	}
+
+	public static void main(String[] args) {
+		List<Student> list = new TestJDBC().getStuList();
+		System.out.println("测试数据库是否连接：" + list.size());
 	}
 
 }

@@ -9,6 +9,8 @@
 	<a href="/springDemo/home/test.html">跳转到WEB-INF</a>
 	<br>
 	<br>
+	<input type="button" value="测试js,new object" onclick="t1()">
+	<br>
 	<br>
 	<!-- <img alt="Preview" src="resources/imgs/pic.jpg" /> -->
 

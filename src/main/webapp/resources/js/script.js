@@ -26,10 +26,10 @@ function cutImg() {
 		url : '/springDemo/home/cutImg',
 		type : 'POST',
 		data : {
-			px : $("#x1").val(),
-			py : $("#y1").val(),
-			pwidth : $("#w").val(),
-			pheight : $("#h").val()
+			x : parseInt($("#x1").val(), 10),
+			y : parseInt($("#y1").val(), 10),
+			width : parseInt($("#w").val(), 10),
+			height : parseInt($("#h").val(), 10)
 		},
 		success : function() {
 			location.href = "/springDemo/success.jsp";
@@ -52,7 +52,8 @@ function login() {
 	});
 }
 
-jQuery(function($) {
+$(function() {
+
 	// Create variables (in this scope) to hold the API and image size
 	var jcrop_api, boundx, boundy,
 
@@ -61,17 +62,13 @@ jQuery(function($) {
 
 	xsize = $pcnt.width(), ysize = $pcnt.height();
 
-	console.log('init', [ xsize, ysize ]);
-	
-	alert("size: " +xsize +"  "+ysize);
-	
 	$('#target').Jcrop({
 		onChange : updatePreview,
 		onSelect : updatePreview,
-		 allowSelect : false,
+		allowSelect : false,
 		bgOpacity : 0.5,
 		aspectRatio : xsize / ysize,
-		setSelect: [0,0,200,200]
+		setSelect : [ 0, 0, 200, 200 ]
 	}, function() {
 		// Use the API to get the real image size
 		var bounds = this.getBounds();
@@ -86,17 +83,19 @@ jQuery(function($) {
 
 	function updatePreview(c) {
 
-		$("#x1").val(c.x);
-		$("#y1").val(c.y);
-		$("#x2").val(c.x2);
-		$("#y2").val(c.y2);
-		$("#w").val(c.w);
-		$("#h").val(c.h);
+		/* 将选择框坐标和长宽显示到页面 */
+		$("#x1").val(parseInt(c.x));
+		$("#y1").val(parseInt(c.y));
+		$("#x2").val(parseInt(c.x2));
+		$("#y2").val(parseInt(c.y2));
+		$("#w").val(parseInt(c.w));
+		$("#h").val(parseInt(c.h));
 
 		if (parseInt(c.w) > 0) {
 			var rx = xsize / c.w;
 			var ry = ysize / c.h;
 
+			/* 预览图随选择框移动动态显示 */
 			$pimg.css({
 				width : Math.round(rx * boundx) + 'px',
 				height : Math.round(ry * boundy) + 'px',
@@ -107,3 +106,20 @@ jQuery(function($) {
 	}
 	;
 });
+
+/** ************************* 测试method ************************************ */
+function t1() {
+	var user = new Object();
+	user.name = "verphen";
+	user.passwd = "test111";
+	
+	$.ajax({
+		type : "POST",
+		url : "home/t1",
+		data : user,
+		success : function(data) {
+			alert("成功返回参数：" + data);
+		}
+	});
+
+}
