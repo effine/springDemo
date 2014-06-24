@@ -16,7 +16,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 
 import com.verphen.model.Student;
 
-public class TestJDBC extends JdbcDaoSupport{
+public class TestJdbcDaoImpl extends JdbcDaoSupport{
 	public List<Student> getStuList() {
 		List<Student> stuList = new ArrayList<Student>();
 		String sql = "select * from student";

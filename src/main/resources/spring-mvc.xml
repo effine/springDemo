@@ -62,7 +62,7 @@
 		<property name="dataSource" ref="dataSource" />
 	</bean>
 
-	<bean id="testJDBC" class="com.verphen.dao.impl.TestJDBC">
+	<bean id="testJDBC" class="com.verphen.dao.impl.TestJdbcDaoImpl">
 		<property name="dataSource" ref="dataSource"></property>
 	</bean>
 	

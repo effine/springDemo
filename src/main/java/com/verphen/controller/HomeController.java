@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.verphen.dao.impl.TestJDBC;
+import com.verphen.dao.impl.TestJdbcDaoImpl;
 import com.verphen.model.Student;
 import com.verphen.model.User;
 import com.verphen.utils.ImgUtils;
@@ -197,7 +197,7 @@ public class HomeController {
 	}
 
 	public static void main(String[] args) {
-		List<Student> list = new TestJDBC().getStuList();
+		List<Student> list = new TestJdbcDaoImpl().getStuList();
 		System.out.println("测试数据库是否连接：" + list.size());
 	}
 
