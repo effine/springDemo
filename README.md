@@ -13,3 +13,8 @@ springDemo
 5)、图片的上传、预览及剪切：/index.jsp	(上传的图片保存在项目目录：/resources/upload；剪切之后的图片同样保存在该目录：名字前加上"Cut")
 
 6)、jquery插件（jquery.validation.js）验证表单：/jstest.jsp
+
+
+================ 说明  ==============================
+
+使用c3po作为数据库连接池

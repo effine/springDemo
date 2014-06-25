@@ -195,10 +195,4 @@ public class HomeController {
 				+ user.getPasswd());
 		return user.getName() + ": " + user.getPasswd();
 	}
-
-	public static void main(String[] args) {
-		List<Student> list = new TestJdbcDaoImpl().getStuList();
-		System.out.println("测试数据库是否连接：" + list.size());
-	}
-
 }
