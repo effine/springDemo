@@ -2,7 +2,6 @@ package com.verphen.controller;
 
 import java.io.File;
 import java.io.IOException;
-import java.util.List;
 
 import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
@@ -16,8 +15,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.verphen.dao.impl.TestJdbcDaoImpl;
-import com.verphen.model.Student;
 import com.verphen.model.User;
 import com.verphen.utils.ImgUtils;
 
@@ -120,24 +117,16 @@ public class HomeController {
 	}
 
 	@RequestMapping("/upload")
-	public String upload(
-			HttpServletRequest request,
-			HttpServletResponse response,
-			HttpSession session,
+	@ResponseBody
+	public String upload(HttpServletRequest request,HttpServletResponse response,HttpSession session,
 			@RequestParam(value = "selfile", required = true) MultipartFile selfile) {
-
-		String uploadPath = request.getServletContext().getRealPath("/")
-				+ "resources\\upload\\";
-
+		String uploadPath = request.getServletContext().getRealPath("/")+ "resources\\upload\\";
 		String filename = selfile.getOriginalFilename();
-		filename = Long.toString(System.currentTimeMillis())
-				+ filename.substring(filename.lastIndexOf("."));
+		filename = Long.toString(System.currentTimeMillis())+ filename.substring(filename.lastIndexOf("."));
 		File targetFile = new File(uploadPath, filename);
-
 		if (!targetFile.exists()) {
 			targetFile.mkdirs();
 		}
-
 		try {
 			selfile.transferTo(targetFile);
 		} catch (IllegalStateException e) {
@@ -145,32 +134,21 @@ public class HomeController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		session.setAttribute("filename", filename);
+		
+		/* 剪切图片 */
+		
 		return "index";
 	}
 
-	@RequestMapping("/cutImg")
-	public String cutImg(HttpServletRequest request,
-			HttpServletResponse response, HttpSession session, int x, int y,
-			int width, int height) {
-
-		/*
-		 * int x = sub(px); int y = sub(py); int width = sub(pwidth); int height
-		 * = sub(pheight);
-		 */
-
-		String path = request.getServletContext().getRealPath("/")
-				+ "resources/upload/";
-		String filename = session.getAttribute("filename").toString();
-
-		String srcpath = path + filename;
-		String subpath = path + "Cut" + filename;
+	@RequestMapping("cutImg")
+	@ResponseBody
+	public String cutImg(HttpServletRequest request,HttpServletResponse response,String srcFilename,String dstFilename,int x, int y,int width, int height) {
 		try {
-			ImgUtils.mycut(srcpath, subpath, x, y, width, height);
+			ImgUtils.mycut(srcFilename, dstFilename, x, y, width, height);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		return "index";
+		return null;
 	}
 
 	public int sub(String s) {

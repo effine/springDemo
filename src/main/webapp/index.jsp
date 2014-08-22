@@ -60,23 +60,23 @@
 	</div>
 
 </body>
-</html>
-
 <!-- Css file -->
 <link rel="stylesheet" href="<c:url value='/resources/css/main.css'/>" type="text/css" />
-<link rel="stylesheet" 	href="<c:url value='/resources/css/jquery.Jcrop.css'/>" type="text/css" />
+<link rel="stylesheet" 	href="<c:url value='/resources/js/Jcrop/jquery.Jcrop.css'/>" type="text/css" />
 <link rel="stylesheet" href="<c:url value='/resources/css/demos.css'/>"  type="text/css" />
 <link rel="stylesheet" href="<c:url value='/resources/css/mymain.css'/>" type="text/css" />
 
 <!-- Js file -->
 <script src="<c:url value='/resources/js/jquery.min.js'/>"></script>
-<script src="<c:url value='/resources/js/jquery.Jcrop.js'/>"></script>
+<script src="<c:url value='/resources/js/Jcrop/jquery.Jcrop.js'/>"></script>
 <script src="<c:url value='/resources/js/script.js'/>"></script>
 <script>
-	$(function() {
+/* 	$(function() {
 		if (location.href.indexOf("?xyz=") < 0) {
 			location.href = "/springDemo/index.jsp?xyz=" + Math.random();
 		}
-	});
+	}); */
 </script>
 
+
+</html>

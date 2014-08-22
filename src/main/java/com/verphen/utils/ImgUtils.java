@@ -9,7 +9,6 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.Rectangle;
 import java.awt.image.BufferedImage;
-import java.awt.image.ImageProducer;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
@@ -20,11 +19,6 @@ import javax.imageio.ImageIO;
 import javax.imageio.ImageReadParam;
 import javax.imageio.ImageReader;
 import javax.imageio.stream.ImageInputStream;
-
-import com.sun.jimi.core.Jimi;
-import com.sun.jimi.core.JimiException;
-import com.sun.jimi.core.JimiWriter;
-import com.sun.jimi.core.options.JPGOptions;
 
 public class ImgUtils {
 
@@ -57,7 +51,7 @@ public class ImgUtils {
 	}
 
 	/* 图片转换为JPG格式 */
-	public static void toJPG(String source, String dest, int quality) {
+	/*public static void toJPG(String source, String dest, int quality) {
 
 		if (dest == null || dest.trim().equals(""))
 			dest = source;
@@ -83,7 +77,7 @@ public class ImgUtils {
 		} catch (JimiException je) {
 			System.err.println("Error: " + je);
 		}
-	}
+	}*/
 
 	/* 图片压缩（修改图片长和宽） */
 	public static void resize(String source, String desc, int width, int height) {
